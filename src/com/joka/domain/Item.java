@@ -1,5 +1,7 @@
 package com.joka.domain;
 
+import com.google.appengine.api.datastore.Key;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,8 +13,8 @@ import java.util.Date;
 public class Item implements Serializable {
 
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Key id;
 
     private String title;
 
@@ -23,11 +25,11 @@ public class Item implements Serializable {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date publishedDate;
 
-    public Integer getId() {
+    public Key getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Key id) {
         this.id = id;
     }
 

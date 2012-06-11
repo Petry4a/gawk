@@ -17,6 +17,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class ApplicationTests {
 
+    //private final LocalServiceTestHelper
+
     @Test
     public void TestGetFeed() throws IOException {
 
