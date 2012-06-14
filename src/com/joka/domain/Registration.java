@@ -23,8 +23,10 @@ public class Registration implements Serializable {
     private Date registrationDate;
 
     @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(nullable = true)
     private Date confirmedData;
 
+    @Column(nullable = true)
     private String confirmationHash;
 
     public Key getId() {
