@@ -10,9 +10,20 @@
         <servlet-class>com.joka.servlets.NotificationServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>com.joka.servlets.RegistrationServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>DoCheck</servlet-name>
         <url-pattern>/doCheck</url-pattern>
+
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
 </web-app>

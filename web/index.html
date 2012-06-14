@@ -1,82 +1,79 @@
 <!DOCTYPE html> 
-<html lang="en">	
-	
-	<head>		
-		
-		<meta charset="utf-8"> 
-		<title>gawk</title>
-        
-        <link rel="stylesheet" href="styles/style.css" /> 
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
-        
-        <!--[if IE 6]>
-            <style>body { behavior: url("styles/ie6-hover-fix.htc"); }</style>
-            <script src="js/ie6-transparency.js"></script>
-            <script>
-                DD_belatedPNG.fix('.circle, .read-more, .blue-bullets li, #sidebar .sidebar-button');
-            </script>
-            <link rel="stylesheet" href="styles/ie6.css" />
-        <![endif]--> 
-        <!--[if IE 7]>
-            <link rel="stylesheet" href="styles/ie7.css" />
-        <![endif]-->  
-                 
-	</head> 
-	
-	<body class="page">
-		
-		<div id="wrap"> 
-				
-        	<div id="header"> 
-        	
-        		<h1><a href="index.html" >gawk</a></h1>
-            	             	
-            </div><!--end header-->
+<html>
 
-            <div id="sign-up-form-container">
+<head>
+	<title>gawk</title>
 
-                <div id="sign-up-form-inner-container">
+	<!-- Style -->
+	<link rel="stylesheet" href="../css/style.css" />
 
-                    <h2 id="sign-up-form-title">Sign up</h2>
+	<!-- jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 
-                    <p class='hide' id='response'></p>
+	<!-- Scripts -->
+	<script src="../js/scripts.js" type="text/javascript"></script>
+</head>
 
-                    <form id='sign-up-form' method='post' action="#">
+<body>
 
-                        <fieldset>
-                            <input id='form_email' type='text' name='email' value="Email" onfocus="if(this.value=='Email'){this.value=''};" onblur="if(this.value==''){this.value='Email'};" />
-                            <input id='form_submit' class="submit" type='submit' name='submit' value='Submit &raquo;' />
-                            <div class='hide'>
-                                <label>Do not fill out this field</label>
-                                <input name='spam_check' type='text' value='' />
-                            </div>
-                        </fieldset>
+	<div id="wrapper">
 
-                    </form>
+		<div id="header">
+			<h1 class="title"></h1>
+		</div> <!-- end header -->
 
-                </div><!-- end sign-up-form-inner-container -->
+		<div id="content">
 
-            </div><!--end sign-up-form-container-->
+			<div id="sign-up-form-container">
+				<h1 class="title">Sign up</h1>
+				<form id="sign-up-form">
+					<div class="field-container">
+						<input type="text" id="email-field" />
+					</div>
+					<div class="field-container">
+						<input type="submit" id="submit-button" value="Submit"/>
+					</div>
 
-			<div id="footer">
-			
-				<p class="copyright">Copyright © 2012 / joka / All Rights Reserved</p>
+				</form>
 
-                <!--
-				<p class="twitter"><a href="[ADD LINK TO TWITTER]" title="[ADD LINK TITLE]">Follow Us On Twitter &rarr;</a></p>
-				-->
-				
-			</div><!--end footer-->
-			
-		</div><!--end wrap-->
-		
-		<div class="cache-images">
-	
-			<img src="images/green-button-bg.png" width="0" height="0" alt="" />
-			
-		</div><!--end cache-images-->
-           
-	</body>
-	
+			</div> <!-- end sign-up-form-container -->
+
+		</div> <!-- end content -->
+
+		<div id="footer">
+			<h1 class="title"></h1>
+		</div> <!-- end footer -->
+
+	</div> <!-- end wrapper -->
+
+	<!-- Loading animation -->
+	<div id="overlay" class="overlay" style="display:none;">
+		<div id="spinner">
+			<img id="img-spinner" src="../images/spinner2.gif" alt="Loading"/>
+		</div>
+	</div>
+
+    <!-- Messages -->
+    <div class="info message">
+    		 <h3>FYI, something just happened!</h3>
+    		 <p class="message-text">This is just an info notification message.</p>
+    </div>
+
+    <div class="error message">
+    		 <h3>Ups, an error ocurred</h3>
+    		 <p class="message-text">This is just an error notification message.</p>
+    </div>
+
+    <div class="warning message">
+    		 <h3>Wait, I must warn you!</h3>
+    		 <p class="message-text">This is just a warning notification message.</p>
+    </div>
+
+    <div class="success message">
+    		 <h3>Success!</h3>
+    		 <p class="message-text">Registration complete.</p>
+    </div>
+
+</body>
+
 </html>

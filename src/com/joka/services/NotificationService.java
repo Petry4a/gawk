@@ -1,6 +1,8 @@
 package com.joka.services;
 
 import com.joka.domain.Item;
+import com.joka.domain.Registration;
+import com.joka.persistence.PersistenceService;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -25,11 +27,10 @@ public class NotificationService {
 
     private static final String ERROR_MESSAGE = "An error occurred.";
 
-    private static final String EMAIL_SUBJECT_TEMPLATE = "%s new episodes of Filip & Fredriks podcas is available.";
+    private static final String EMAIL_SUBJECT_TEMPLATE = "%s new episode(s) of Filip & Fredriks podcast is available.";
     private static final String NEW_LINE_CHARS = "\r\n";
 
     private static final String EMAIL_FROM = "jonas.lmk@gmail.com";
-    private static final String EMAIL_TO = EMAIL_FROM;
 
     private NotificationService() {}
 
@@ -44,10 +45,19 @@ public class NotificationService {
 
     public void sendNotifications(List<Item> items) {
 
-        //TODO add functionality to send notification to multiple recipients.
-
         String messageSubject = String.format(EMAIL_SUBJECT_TEMPLATE, items.size());
         String messageBody = getMessageBody(items);
+
+        List<Registration> registrations = PersistenceService.getInstance().getAllConfirmedRegistrations();
+
+        for(Registration registration : registrations) {
+
+            sendNotification(registration, messageSubject, messageBody);
+        }
+
+    }
+
+    public void sendNotification(Registration registration, String messageSubject, String messageBody) {
 
         Properties properties = new Properties();
         Session session = Session.getDefaultInstance(properties, null);
@@ -55,12 +65,12 @@ public class NotificationService {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(EMAIL_FROM));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(EMAIL_TO));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(registration.getEmail()));
             message.setSubject(messageSubject);
             message.setText(messageBody);
 
             Transport.send(message);
-            logger.info(String.format("Sent message to recipient %s", EMAIL_TO));
+            logger.info(String.format("Sent message to recipient %s", registration.getEmail()));
 
         } catch (AddressException e) {
             logger.log(Level.SEVERE, ERROR_MESSAGE, e);
@@ -69,8 +79,6 @@ public class NotificationService {
             logger.log(Level.SEVERE, ERROR_MESSAGE, e);
             e.printStackTrace();
         }
-
-
     }
 
     private String getMessageBody(List<Item> items) {
